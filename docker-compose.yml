@@ -2,27 +2,27 @@ version: '3.9'
 services:
   webpack:
     build:
-      context: ./bal-dev
+      context: .
       dockerfile: Dockerfile
     volumes:
-      - ./bal-dev:/usr/src/app/balengineering
+      - .:/usr/src/app/balengineering
     ports:
       - '9000:9000'
-    command: npm run start
+    command: ["npm", "run", "start"]
 
   php:
     image: php:fpm
     volumes:
-      - ./bal-dev/public:/usr/src/app/balengineering/public
+      - ./public:/usr/src/app/balengineering/public
 
   nginx:
     build:
-      context: ./bal-dev
+      context: .
       dockerfile: Dockerfile.nginx
     volumes:
-      - ./bal-dev/public:/usr/share/nginx/html
+      - ./public:/usr/share/nginx/html
     ports:
-      - '80:80'
+      - '8080:80'
     depends_on:
       - webpack
       - php
