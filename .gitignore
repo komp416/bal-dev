@@ -1,0 +1,20 @@
+# Ignore node_modules
+/node_modules
+
+# Ignore dist directory. Last build should be snapshoted from /public directory.
+/dist
+
+# Ignore Docker images
+*.image
+
+# Ignore dotenv environment files
+.env
+
+# Ignore npm debug logs
+npm-debug.log*
+
+# Ignore IDE specific files
+.idea
+.vscode
+*.swp
+*.swo
