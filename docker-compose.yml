@@ -22,7 +22,7 @@ services:
     volumes:
       - ./public:/usr/src/app/balengineering/public
     ports:
-      - '8080:80'
+      - '80:80'
     depends_on:
       - webpack
       - php
