@@ -7,22 +7,24 @@ services:
     volumes:
       - .:/usr/src/app/balengineering
     ports:
-      - '9000:9000'
+      - '9001:9001'
     command: ["npm", "run", "start"]
 
   php:
     image: php:fpm
     volumes:
-      - ./public:/usr/src/app/balengineering/public
+      - ./public:/usr/share/nginx/html
 
   nginx:
     build:
       context: .
       dockerfile: Dockerfile.nginx
     volumes:
-      - ./public:/usr/share/nginx/html
+      - ./public:/usr/src/app/balengineering/public
     ports:
       - '8080:80'
     depends_on:
       - webpack
+      - php
+    links:
       - php
