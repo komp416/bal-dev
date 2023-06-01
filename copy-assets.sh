@@ -1,2 +1,2 @@
 #!/bin/bash
-rsync -av --delete ./dist/ ./public/
+rsync -av --update ./dist/ ./public/
